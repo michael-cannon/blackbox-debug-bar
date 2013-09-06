@@ -8,8 +8,8 @@
  * @license GPL
  */
 
+
 class BlackBox_Exception extends Exception
 {
 
 }
-

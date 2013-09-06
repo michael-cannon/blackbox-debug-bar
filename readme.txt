@@ -46,8 +46,9 @@ Request [support](http://wordpress.org/support/plugin/blackbox-debug-bar).
 
 == Changelog ==
 = trunk =
-* Update readme.txt
 * Add WordPress constants
+* Initial pass at coding standard
+* Update readme.txt
 
 = 0.1.3 =
 * Initial

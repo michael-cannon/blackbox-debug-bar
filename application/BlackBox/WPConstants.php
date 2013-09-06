@@ -7,6 +7,7 @@
  * @license GPL
  */
 
+
 class BlackBox_WPConstants {
 	private static $definable = null;
 	private static $defined   = array();
@@ -15,6 +16,7 @@ class BlackBox_WPConstants {
 		self::setDefinable();
 		self::setConstants();
 	}
+
 
 	protected static function setDefinable() {
 		self::$definable = array(
@@ -556,6 +558,7 @@ class BlackBox_WPConstants {
 		);
 	}
 
+
 	protected static function setConstants() {
 		foreach ( self::$definable as $value ) {
 			if ( defined( $value ) )
@@ -563,7 +566,10 @@ class BlackBox_WPConstants {
 		}
 	}
 
+
 	public function getConstants() {
 		return self::$defined;
 	}
+
+
 }

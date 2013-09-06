@@ -8,8 +8,8 @@ Version: 0.1.3
 Author URI: http://ditio.net/
 */
 
-if(!defined('SAVEQUERIES')) {
-    define('SAVEQUERIES', 1);
+if (!defined('SAVEQUERIES')) {
+	define('SAVEQUERIES', 1);
 }
 
 define('BLACKBOX_DIR', dirname(__FILE__));

@@ -9,20 +9,21 @@
  * @license GPL
  */
 
-class BlackBox_Hook
-{
-    public static function profiler()
-    {
-        if(func_get_arg(0) != BlackBox::DEBUG) {
-            return;
-        }
 
-        BlackBox::getInstance()->getProfiler()->trace(func_get_arg(1));
-    }
+class BlackBox_Hook {
+	public static function profiler() {
+		if (func_get_arg(0) != BlackBox::DEBUG) {
+			return;
+		}
 
-    public static function footer()
-    {
-        apply_filters('debug', 'Profiler Stopped');
-        include_once BLACKBOX_DIR."/application/debug-bar.php";
-    }
+		BlackBox::getInstance()->getProfiler()->trace(func_get_arg(1));
+	}
+
+
+	public static function footer() {
+		apply_filters('debug', 'Profiler Stopped');
+		include_once BLACKBOX_DIR."/application/debug-bar.php";
+	}
+
+
 }
