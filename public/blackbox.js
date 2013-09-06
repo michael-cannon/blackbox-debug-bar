@@ -2,7 +2,7 @@ hljs.initHighlightingOnLoad();
 
 var WpDebugBar = {
 
-    element: ['globals', 'profiler', 'database', 'errors'],
+    element: ['globals', 'constants', 'profiler', 'database', 'errors'],
 
     open: null,
 

@@ -13,7 +13,7 @@ class BlackBox
     /**
      * Filter name to trace
      */
-    const DEBUG = "debug";
+    const DEBUG = 'debug';
 
     /**
      * (Singleton) Insatnce of BlackBox object
@@ -21,6 +21,13 @@ class BlackBox
      * @var BlackBox
      */
     private static $_instance = null;
+
+    /**
+     * WPConstants object
+     *
+     * @var BlackBox_WPConstants
+     */
+    private $_wpconstants = null;
 
     /**
      * List of globals
@@ -68,6 +75,17 @@ class BlackBox
             'session' => isset($_SESSION) ? $_SESSION : array(),
             'server' => isset($_SERVER) ? $_SERVER : array()
         );
+        $this->_wpconstants = new BlackBox_WPConstants();
+    }
+
+    /**
+     * Returns WordPress constants array
+     *
+     * @return BlackBox_WPConstants
+     */
+    public function getWPConstants()
+    {
+        return $this->_wpconstants;
     }
 
     /**
@@ -101,7 +119,7 @@ class BlackBox
     {
         $name = strtolower($name);
         if(!array_key_exists($name, $this->_globals)) {
-            throw new BlackBox_Exception("Global $name does not exist.", 100);
+            throw new BlackBox_Exception('Global $name does not exist.', 100);
         }
 
         return $this->_globals[$name];
@@ -125,15 +143,15 @@ class BlackBox
     public static function errorHandler($errno, $errstr, $errfile, $errline)
     {
         if($errno == 8) {
-            $errname = "Notice";
+            $errname = 'Notice';
         } elseif ($errno == 2) {
-            $errname = "Warning";
+            $errname = 'Warning';
         } elseif ($errno == 8192) {
-            $errname = "Deprecated";
+            $errname = 'Deprecated';
         } elseif ($errno == 2048) {
-            $errname = "Strict";
+            $errname = 'Strict';
         } else {
-            $errname = "Unknown";
+            $errname = 'Unknown';
         }
 
         $hash = md5($errline.$errfile.$errstr.$errno);
@@ -142,12 +160,12 @@ class BlackBox
             self::getInstance()->_error[$hash]['count']++;
         } else {
             self::getInstance()->_error[$hash] = array(
-                "errno" => $errno,
-                "message" => $errstr,
-                "file" => $errfile,
-                "name" => $errname,
-                "line" => $errline,
-                "count" => 0
+                'errno' => $errno,
+                'message' => $errstr,
+                'file' => $errfile,
+                'name' => $errname,
+                'line' => $errline,
+                'count' => 0
             );
         }
 
@@ -171,27 +189,26 @@ class BlackBox
     public static function init()
     {        
 		// init profiler
-        add_filter("all", array("BlackBox_Hook", "profiler"));
+        add_filter('all', array('BlackBox_Hook', 'profiler'));
         apply_filters('debug', 'Profiler Initiaded');
         apply_filters('debug', 'Profiler Noise');
 
 		add_action('init', array('BlackBox', 'init_scripts_styles'));
-        add_action('admin_footer', array("BlackBox_Hook", "footer"));
-        add_action('wp_footer', array("BlackBox_Hook", "footer"));
+        add_action('admin_footer', array('BlackBox_Hook', 'footer'));
+        add_action('wp_footer', array('BlackBox_Hook', 'footer'));
 
-        set_error_handler(array("BlackBox", "errorHandler"), E_ALL | E_STRICT);
+        set_error_handler(array('BlackBox', 'errorHandler'), E_ALL | E_STRICT);
     }
 	
 	public static function init_scripts_styles()
     {
-        wp_register_script("blackbox-js", plugins_url()."/blackbox-debug-bar/public/highlight.pack.js", array("jquery"));
-        wp_register_script("blackbox-highlight", plugins_url()."/blackbox-debug-bar/public/blackbox.js", array("jquery"));
+        wp_register_script('blackbox-js', plugins_url().'/blackbox-debug-bar/public/highlight.pack.js', array('jquery'));
+        wp_register_script('blackbox-highlight', plugins_url().'/blackbox-debug-bar/public/blackbox.js', array('jquery'));
 
-        wp_register_style("blackbox-css", plugins_url()."/blackbox-debug-bar/public/styles.css");
-		wp_enqueue_style("blackbox-css");
+        wp_register_style('blackbox-css', plugins_url().'/blackbox-debug-bar/public/styles.css');
+		wp_enqueue_style('blackbox-css');
 
-		wp_enqueue_script("blackbox-js");
-		wp_enqueue_script("blackbox-highlight");
+		wp_enqueue_script('blackbox-js');
+		wp_enqueue_script('blackbox-highlight');
 	}
 }
-

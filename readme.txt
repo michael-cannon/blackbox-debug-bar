@@ -45,9 +45,12 @@ Request [support](http://wordpress.org/support/plugin/blackbox-debug-bar).
 4. Errors tab. Displays error type and the error message. If the error occured more then once  its type is displayed as "Notice (X)" where X is the number of error occurances.
 
 == Changelog ==
-
+= trunk =
 * Update readme.txt
 * Add WordPress constants
+
+= 0.1.3 =
+* Initial
 
 == Upgrade Notice ==
 

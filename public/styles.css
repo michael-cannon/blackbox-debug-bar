@@ -74,6 +74,10 @@
     background-image: url(icons/wrench.png);
     background-repeat: no-repeat;
 }
+#blackbox-web-debug  .constants {
+    background-image: url(icons/wrench.png);
+    background-repeat: no-repeat;
+}
 #blackbox-web-debug  .profiler {
     background-image: url(icons/lighting.png);
     background-repeat: no-repeat;
