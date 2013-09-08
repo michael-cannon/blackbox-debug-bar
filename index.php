@@ -19,5 +19,6 @@ require_once BLACKBOX_DIR.'/application/BlackBox/Profiler.php';
 require_once BLACKBOX_DIR.'/application/BlackBox/Hook.php';
 require_once BLACKBOX_DIR.'/application/BlackBox/Exception.php';
 require_once BLACKBOX_DIR.'/application/BlackBox/WPConstants.php';
+require_once BLACKBOX_DIR.'/application/BlackBox/WPGlobals.php';
 
 BlackBox::init();

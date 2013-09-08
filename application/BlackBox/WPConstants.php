@@ -14,7 +14,7 @@ class BlackBox_WPConstants {
 
 	public function __construct() {
 		self::setDefinable();
-		self::setConstants();
+		self::setDefined();
 	}
 
 
@@ -559,7 +559,7 @@ class BlackBox_WPConstants {
 	}
 
 
-	protected static function setConstants() {
+	protected static function setDefined() {
 		foreach ( self::$definable as $value ) {
 			if ( defined( $value ) )
 				self::$defined[ $value ] = constant( $value );
@@ -567,7 +567,7 @@ class BlackBox_WPConstants {
 	}
 
 
-	public function getConstants() {
+	public function getDefined() {
 		return self::$defined;
 	}
 

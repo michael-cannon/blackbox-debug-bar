@@ -34,10 +34,11 @@ foreach ($bb->getErrors() as $error) {
 <pre><code class="php">$_COOKIE = <?php echo esc_html(var_export($bb->getGlobal("cookie"), true)) ?>;</code></pre><br />
 <pre><code class="php">$_SESSION = <?php echo esc_html(var_export($bb->getGlobal("session"), true)) ?>;</code></pre><br />
 <pre><code class="php">$_SERVER = <?php echo esc_html(var_export($bb->getGlobal("server"), true)) ?>;</code></pre><br />
+<pre><code class="php">WP $GLOBALS = <?php echo esc_html(var_export($bb->getGlobal("wpglobals"), true)) ?>;</code></pre><br />
 </div>
 
 <div id="blackbox-constants" class="debug-panel">
-<pre><code class="php"><?php echo esc_html(var_export($bb->getWPConstants()->getConstants(), true)) ?>;</code></pre>
+<pre><code class="php"><?php echo esc_html(var_export($bb->getWPConstants()->getDefined(), true)) ?>;</code></pre>
 </div>
 
 <div id="blackbox-profiler" class="debug-panel">

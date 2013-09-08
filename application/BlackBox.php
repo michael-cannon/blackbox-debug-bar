@@ -31,6 +31,13 @@ class BlackBox {
 	private $_wpconstants = null;
 
 	/**
+	 * WPGlobals object
+	 *
+	 * @var BlackBox_WPGlobals
+	 */
+	private $_wpglobals = null;
+
+	/**
 	 * List of globals
 	 *
 	 * Globals will be stored in the array in case someone will want to
@@ -43,7 +50,8 @@ class BlackBox {
 		'post' => null,
 		'cookie' => null,
 		'session' => null,
-		'server' => null
+		'server' => null,
+		'wpglobals' => null,
 	);
 
 	/**
@@ -68,15 +76,17 @@ class BlackBox {
 	private $_path = null;
 
 	private function __construct() {
-		$this->_profiler = new BlackBox_Profiler();
-		$this->_globals = array(
+		$this->_profiler    = new BlackBox_Profiler();
+		$this->_wpconstants = new BlackBox_WPConstants();
+		$this->_wpglobals   = new BlackBox_WPGlobals();
+		$this->_globals     = array(
 			'get' => isset($_GET) ? $_GET : array(),
 			'post' => isset($_POST) ? $_POST : array(),
 			'cookie' => isset($_COOKIE) ? $_COOKIE : array(),
 			'session' => isset($_SESSION) ? $_SESSION : array(),
-			'server' => isset($_SERVER) ? $_SERVER : array()
+			'server' => isset($_SERVER) ? $_SERVER : array(),
+			'wpglobals' => $this->_wpglobals->getDefined(),
 		);
-		$this->_wpconstants = new BlackBox_WPConstants();
 	}
 
 
