@@ -20,7 +20,7 @@ How can it help you with development:
 3. Executed MySQL queries and time it took to execute each query (useful for finding slow queries)
 4. Profiler for measuring performance of your plugins and themes
 5. Errors occurred when loading WordPress page
-6. Displays active WordPress constants
+6. Displays active WordPress constants and globals
 
 = Notes =
 The icons are property of http://www.gentleface.com/free_icon_set.html, used on Creative Commons Attribution-NonCommercial license.
@@ -47,6 +47,7 @@ Request [support](http://wordpress.org/support/plugin/blackbox-debug-bar).
 == Changelog ==
 = trunk =
 * Add WordPress constants
+* Add WordPress globals
 * Initial pass at coding standard
 * Update readme.txt
 
