@@ -85,7 +85,7 @@ class BlackBox {
 			'cookie' => isset($_COOKIE) ? $_COOKIE : array(),
 			'session' => isset($_SESSION) ? $_SESSION : array(),
 			'server' => isset($_SERVER) ? $_SERVER : array(),
-			'wpglobals' => $this->_wpglobals->getDefined(),
+			//'wpglobals' => $this->_wpglobals->getDefined(),
 		);
 	}
 
@@ -201,7 +201,7 @@ class BlackBox {
 	public static function init() {
 		// init profiler
 		add_filter('all', array('BlackBox_Hook', 'profiler'));
-		apply_filters('debug', 'Profiler Initiaded');
+		apply_filters('debug', 'Profiler Initiated');
 		apply_filters('debug', 'Profiler Noise');
 
 		add_action('init', array('BlackBox', 'init_scripts_styles'));
