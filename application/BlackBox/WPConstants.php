@@ -14,7 +14,9 @@ class BlackBox_WPConstants {
 
 
 	public function getDefined() {
-		return get_defined_constants( true );
+		$constants = get_defined_constants( true );
+
+		return $constants['user'];
 	}
 
 }
