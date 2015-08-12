@@ -21,5 +21,13 @@ require_once BLACKBOX_DIR.'/application/BlackBox/Exception.php';
 require_once BLACKBOX_DIR.'/application/BlackBox/WPConstants.php';
 require_once BLACKBOX_DIR.'/application/BlackBox/WPGlobals.php';
 
-if ( is_admin() )
-	BlackBox::init();
+BlackBox::init();
+
+// remove the blackbox display if not administrator role
+add_action('plugins_loaded','blackbox_user_filter');
+function blackbox_user_filter() {
+	global $current_user; $current_user = wp_get_current_user();
+	if (in_array('administrator', $current_user->roles)) {return;}
+	remove_action('admin_footer', array('BlackBox_Hook', 'footer'));
+	remove_action('wp_footer', array('BlackBox_Hook', 'footer'));
+}
